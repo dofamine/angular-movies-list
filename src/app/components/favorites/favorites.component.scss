@@ -1,0 +1,31 @@
+.favorites {
+  &__container {
+    column-gap: 4%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__card {
+    margin-top: 20px;
+
+    img {
+      max-width: 300px;
+      align-self: center;
+    }
+
+    &__like-button {
+      cursor: pointer;
+      font-size: 25px;
+      color:red;
+    }
+
+    &__rating-star{
+      color:#cecece;
+      font-size:32px;
+
+      &.colored {
+        color:#fbc634;
+      }
+    }
+  }
+}
