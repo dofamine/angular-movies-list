@@ -9,20 +9,20 @@ import { filter, iif, map, of, switchMap, tap } from 'rxjs';
   styleUrls: ['./empty.component.scss']
 })
 export class EmptyComponent implements OnInit {
-  private readonly apiUrl = 'https://api.themoviedb.org/3';
-  private readonly apiKey = 'c1faa70e83d532faeccb93fa4029a561';
+  apiUrl = 'https://api.themoviedb.org/3';
+  apiKey = 'c1faa70e83d532faeccb93fa4029a561';
 
   constructor(
-    private readonly http: HttpClient,
-    private readonly route: ActivatedRoute,
-    private readonly router: Router
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
-  public ngOnInit(): void {
+   ngOnInit(): void {
     this.getSessionId();
   }
 
-  private getSessionId(): void {
+  getSessionId(): void {
     this.route.queryParams.pipe(
       switchMap(
         ({ request_token, approved }) => iif(

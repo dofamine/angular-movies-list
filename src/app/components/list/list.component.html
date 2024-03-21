@@ -1,4 +1,4 @@
-<section class="header-main border-bottom bg-white app-list__header align-items-center">
+<div class="header-main border-bottom bg-white app-list__header align-items-center">
 	<div class="container-fluid d-flex justify-content-between pt-3 pb-3">
     <div class="d-flex form-inputs app-list__header__search-field">
       <input
@@ -21,16 +21,12 @@
     </div>
 
     <span class="mr-2">
-      <ng-container *ngIf="!!accountId;else loginButton">
-        <a routerLink="/favorites" class="btn btn-primary">Favorites</a>
-      </ng-container>
+      <a *ngIf="!!accountId" routerLink="/favorites" class="btn btn-primary">Favorites</a>
 
-      <ng-template #loginButton>
-        <a routerLink="/login" class="btn btn-primary">Login</a>
-      </ng-template>
+      <a *ngIf="!accountId" routerLink="/login" class="btn btn-primary">Login</a>
     </span>
 	</div>
-</section>
+</div>
 
 <div class="app-list__container px-4">
   <div *ngFor="let movie of movies|filter:searchText" class="card app-list__card">

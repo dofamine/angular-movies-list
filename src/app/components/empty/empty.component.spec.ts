@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EmptyComponent } from './empty.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('EmptyComponent', () => {
   let component: EmptyComponent;
@@ -8,7 +11,14 @@ describe('EmptyComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmptyComponent ]
+      declarations: [ EmptyComponent ],
+      imports: [HttpClientModule],
+      providers: [{
+        provide: ActivatedRoute,
+        useValue: {
+          queryParams: of()
+        }
+      }]
     })
     .compileComponents();
 

@@ -9,31 +9,26 @@ import { tap } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public loginForm: FormGroup<ILoginFormGroupControls> = this.initForm();
+   loginForm: FormGroup<any> = this.initForm();
 
-  private readonly apiKey = 'c1faa70e83d532faeccb93fa4029a561';
+  apiKey = 'c1faa70e83d532faeccb93fa4029a561';
 
   constructor(
-    private readonly http: HttpClient,
-    private readonly fb: FormBuilder
+    private http: HttpClient,
+    private fb: FormBuilder
   ) {}
 
-  public createSession(): void {
+   createSession(): void {
     this.http.get(`https://api.themoviedb.org/3/authentication/token/new?api_key=${this.apiKey}`).pipe(
       tap(({ request_token }: any) => {
         window.open(`https://www.themoviedb.org/authenticate/${request_token}?redirect_to=http://localhost:4200/authenticate`, '_self');
       })).subscribe();
   }
 
-  private initForm(): FormGroup<ILoginFormGroupControls> {
+  private initForm(): FormGroup<any> {
     return this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required]
     });
   }
-}
-
-interface ILoginFormGroupControls {
-  email: FormControl<string | null>;
-  password: FormControl<string | null>;
 }
