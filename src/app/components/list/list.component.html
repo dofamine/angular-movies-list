@@ -21,9 +21,13 @@
     </div>
 
     <span class="mr-2">
-      <a *ngIf="!!accountId" routerLink="/favorites" class="btn btn-primary">Favorites</a>
+      <ng-container *ngIf="!!accountId">
+        <a routerLink="/favorites" class="btn btn-primary me-2">Favorites</a>
 
-      <a *ngIf="!accountId" routerLink="/login" class="btn btn-primary">Login</a>
+        <a (click)="logout()" class="btn btn-primary">Logout</a>
+      </ng-container>
+
+      <a *ngIf="!accountId" (click)="createSession()" class="btn btn-primary">Login</a>
     </span>
 	</div>
 </div>

@@ -75,4 +75,16 @@ export class ListComponent implements OnInit {
       map(({ results }) => results.map((movie: any) => ({...movie, isFavorite: false}))),
     );
   }
+
+  createSession(): void {
+    this.http.get(`${this.apiUrl}/authentication/token/new?api_key=${this.apiKey}`).pipe(
+      tap(({ request_token }: any) => {
+        window.open(`https://www.themoviedb.org/authenticate/${request_token}?redirect_to=http://localhost:4200/authenticate`, '_self');
+      })).subscribe();
+  }
+
+  logout(): void {
+    localStorage.clear();
+    location.reload();
+  }
 }
