@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Tasks:
+
+- refactor the project finding and highlighting the problems and create a PR to master branch;
+
+- fix and write tests;
+
+- create page of adding film using angular forms with possibility of adding dynamic fields (title, desc, image, actors, etc.) put added films locally and merge with API data*;
